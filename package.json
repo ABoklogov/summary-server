@@ -1,0 +1,31 @@
+{
+  "name": "summary-server",
+  "version": "1.0.0",
+  "description": "Сервер для приложения summary",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./din/server.js",
+    "dev": "nodemon ./din/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ABoklogov/summary-server.git"
+  },
+  "author": "ABoklogov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ABoklogov/summary-server/issues"
+  },
+  "homepage": "https://github.com/ABoklogov/summary-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
