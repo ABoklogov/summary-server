@@ -4,8 +4,9 @@
   "description": "Сервер для приложения summary",
   "main": "index.js",
   "scripts": {
-    "start": "node ./din/server.js",
-    "dev": "nodemon ./din/server.js"
+    "test": "echo \"No test\"",
+    "start": "node ./din/server",
+    "dev": "nodemon ./din/server"
   },
   "repository": {
     "type": "git",
