@@ -3,6 +3,8 @@ const logger = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { serverLog } = require('./middlewares');
+const { resumeRouter } = require('./routes/api');
+const { portfolioRouter } = require('./routes/api');
 
 const app = express();
 
@@ -14,11 +16,10 @@ app.use(express.json({ limit: 10000 }));
 app.use(express.static('public')); // для отдачи статичных файлов
 
 // логируем все входящие запросы в файл server.log
-app.use(serverLog);
+app.use(serverLog());
 
-app.get('/product', (req, res) => {
-  res.send('<h1>product</h1>');
-});
+app.use('/api/v1/resume', resumeRouter);
+app.use('/api/v1/portfolio', portfolioRouter);
 
 app.use((_, res) => {
   res.status(404).json({
