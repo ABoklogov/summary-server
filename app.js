@@ -20,6 +20,10 @@ app.use(serverLog());
 
 app.use('/api/v1/resume', resumeRouter);
 app.use('/api/v1/portfolio', portfolioRouter);
+app.use('/api/v1/test', (req, res) => {
+  res.send('<h2>test</h2>')
+});
+
 
 app.use((_, res) => {
   res.status(404).json({

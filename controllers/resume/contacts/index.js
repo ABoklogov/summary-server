@@ -6,6 +6,10 @@ const updateCity = require('./updateCity');
 const updateEmail = require('./updateEmail');
 const updatePhone = require('./updatePhone');
 const updateTelegram = require('./updateTelegram');
+const addCity = require('./addCity');
+const addEmail = require('./addEmail');
+const addPhone = require('./addPhone');
+const addTelegram = require('./addTelegram');
 
 module.exports = {
   removeCity,
@@ -16,4 +20,8 @@ module.exports = {
   updateEmail,
   updatePhone,
   updateTelegram,
+  addCity,
+  addEmail,
+  addPhone,
+  addTelegram
 }

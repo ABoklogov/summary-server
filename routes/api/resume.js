@@ -6,21 +6,29 @@ const { resume: ctrl } = require('../../controllers/');
 
 router.get('/', ctrl.getAll);
 
+// router.post('/about-name', ctrl.about.addAName);
+// router.delete('/about-name', ctrl.about.removeName);
 // router.put('/about-name', ctrl.about.updateName);
+// router.post('/about', ctrl.about.addAbout);
+// router.delete('/about', ctrl.about.removeAbout);
 // router.put('/about', ctrl.about.updateAbout);
 
 // router.post('/certificate', ctrl.certificate.add);
-// router.put('/certificate', ctrl.certificate.updateById);
 // router.delete('/certificate', ctrl.certificate.removeById);
+// router.put('/certificate', ctrl.certificate.updateById);
 
+// router.post('/contacts/city', ctrl.contacts.addCity);
+// router.post('/contacts/email', ctrl.contacts.addEmail);
+// router.post('/contacts/phone', ctrl.contacts.addPhone);
+// router.post('/contacts/telegram', ctrl.contacts.addTelegram);
 // router.delete('/contacts/city', ctrl.contacts.removeCity);
-// router.put('/contacts/city', ctrl.contacts.updateCity);
 // router.delete('/contacts/email', ctrl.contacts.removeEmail);
-// router.put('/contacts/email', ctrl.contacts.updateEmail);
 // router.delete('/contacts/phone', ctrl.contacts.removePhone);
+// router.delete('/contacts/telegram', ctrl.contacts.removeTelegram);
+// router.put('/contacts/city', ctrl.contacts.updateCity);
+// router.put('/contacts/email', ctrl.contacts.updateEmail);
 // router.put('/contacts/phone', ctrl.contacts.updatePhone);
-// router.delete('/contacts/phone', ctrl.contacts.removeTelegram);
-// router.put('/contacts/phone', ctrl.contacts.updateTelegram);
+// router.put('/contacts/telegram', ctrl.contacts.updateTelegram);
 
 // router.post('/education', ctrl.education.add);
 // router.delete('/education', ctrl.education.removeById);
