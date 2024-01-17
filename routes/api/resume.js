@@ -6,7 +6,7 @@ const { resume: ctrl } = require('../../controllers/');
 
 router.get('/', ctrl.getAll);
 
-// router.post('/about-name', ctrl.about.addAName);
+// router.post('/about-name', ctrl.about.addName);
 // router.delete('/about-name', ctrl.about.removeName);
 // router.put('/about-name', ctrl.about.updateName);
 // router.post('/about', ctrl.about.addAbout);
