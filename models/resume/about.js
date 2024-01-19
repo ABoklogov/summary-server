@@ -14,7 +14,6 @@ const aboutSchema = Schema({
       },
       link: {
         type: String,
-        required: true
       }
     },
     en: {
@@ -28,7 +27,6 @@ const aboutSchema = Schema({
       },
       link: {
         type: String,
-        required: true
       }
     },
   },

@@ -1,6 +1,7 @@
-const { About, joiSchemaAbout } = require('./about');
+const { About } = require('./about');
+const { Contact } = require('./contact');
 
 module.exports = {
   About,
-  joiSchemaAbout
+  Contact
 }
