@@ -1,10 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+const { validation } = require('../../middlewares')
 const { resume: ctrl } = require('../../controllers/');
-// console.log("🚀 ~ file: resume.js:5 ~ ctrl:", ctrl)
+const { joiSchemaAbout } = require('../../models/resume');
 
-router.get('/', ctrl.getAll);
+// console.log("🚀 ~ file: resume.js:5 ~ ctrl:", ctrl)
+const validationAbout = validation(joiSchemaAbout);
+
+// изменяем либо объект name, либо about (но в этих объектах все поля должны быть заполнены)
+router.patch('/about/:id', validationAbout, ctrl.about.update);
 
 // router.post('/about-name', ctrl.about.addName);
 // router.delete('/about-name', ctrl.about.removeName);
@@ -45,5 +50,7 @@ router.get('/', ctrl.getAll);
 // router.post('/tech-skills', ctrl.techSkills.add);
 // router.delete('/tech-skills', ctrl.techSkills.removeById);
 // router.put('/tech-skills', ctrl.techSkills.updateById);
+
+router.get('/', ctrl.getAll);
 
 module.exports = router;
