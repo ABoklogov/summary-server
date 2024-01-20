@@ -1,9 +1,11 @@
-const { About } = require('../../../models/resume');
+const { Contact } = require('../../../models/resume');
 
-const update = async (req, res, next) => {
-  const id = req.params.id;
+const updateEmail = async (req, res) => {
+  const {id} = req.params;
+  const {email} = req.body;
+
   try {
-    const result = await About.findByIdAndUpdate(id, req.body, {new: true});
+    const result = await Contact.findByIdAndUpdate(id, {email}, {new: true});
  
     result
     ? res.status(200).json({
@@ -12,7 +14,7 @@ const update = async (req, res, next) => {
       data: {
         result
       },
-      message: 'Data updated'
+      message: 'Email updated'
     })
     : res.status(404).json({
       status: 'error',
@@ -21,8 +23,6 @@ const update = async (req, res, next) => {
       message: 'Not found'
     })
   } catch (error) {
-    // доделать ошибку схемы
-    // next(error)
     res.status(400).json({
       status: 'error',
       code: 400,
@@ -32,4 +32,4 @@ const update = async (req, res, next) => {
   };
 };
 
-module.exports = update;
+module.exports = updateEmail;

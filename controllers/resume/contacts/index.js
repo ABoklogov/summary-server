@@ -1,5 +1,11 @@
-const update = require('./update');
+const updateCity = require('./updateCity');
+const updateEmail = require('./updateEmail');
+const updatePhone = require('./updatePhone');
+const updateTelegram = require('./updateTelegram');
 
 module.exports = {
-  update
+  updateCity,
+  updateEmail,
+  updatePhone,
+  updateTelegram
 }
