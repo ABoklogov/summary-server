@@ -22,7 +22,7 @@ const educationSchema = Schema({
       required: true
     },
   }
-});
+}, { versionKey: false, timestamps: true });
 
 const joiSchemaEducation = Joi.object({
   institution: {

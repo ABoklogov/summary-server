@@ -14,7 +14,7 @@ const socialSchema = Schema({
     type: String,
     required: true
   },
-});
+}, { versionKey: false, timestamps: true });
 
 const joiSchemaSocial = Joi.object({
   link: Joi.string().required(),
