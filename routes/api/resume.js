@@ -18,16 +18,15 @@ router.patch('/about/:id/about', validationAbout, ctrl.about.updateAbout);
 router.patch('/contacts/:id/city', validationContacts, ctrl.contacts.updateCity);
 router.patch('/contacts/:id/email', validationContacts, ctrl.contacts.updateEmail);
 router.patch('/contacts/:id/phone', validationContacts, ctrl.contacts.updatePhone);
-router.patch('/contacts/:id/telegram', validationContacts, ctrl.contacts.updateTelegram);
+router.patch('/contacts/:id/telegram', ctrl.contacts.updateTelegram);
 
 router.post('/social', validationSocial, ctrl.social.add);
+router.put('/social/:id', validationSocial, ctrl.social.updateById);
 router.delete('/social/:id', ctrl.social.removeById);
-// router.put('/social', ctrl.social.updateById);
 
 // router.post('/certificate', ctrl.certificate.add);
 // router.delete('/certificate', ctrl.certificate.removeById);
 // router.put('/certificate', ctrl.certificate.updateById);
-
 
 // router.post('/education', ctrl.education.add);
 // router.delete('/education', ctrl.education.removeById);
