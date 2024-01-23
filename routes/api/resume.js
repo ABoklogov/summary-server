@@ -9,12 +9,14 @@ const { joiSchemaContacts } = require('../../models/resume/contact');
 const { joiSchemaSocial } = require('../../models/resume/social');
 const { joiSchemaEducation } = require('../../models/resume/education');
 const { joiSchemaTechSkill } = require('../../models/resume/techSkill');
+const { joiSchemaExperience } = require('../../models/resume/experience');
 
 const validationAbout = validation(joiSchemaAbout);
 const validationContacts = validation(joiSchemaContacts);
 const validationSocial= validation(joiSchemaSocial);
 const validationEducation= validation(joiSchemaEducation);
 const validationTechSkill= validation(joiSchemaTechSkill);
+const validationExperience= validation(joiSchemaExperience);
 
 router.patch('/about/:id/name', validationAbout, ctrl.about.updateName);
 router.patch('/about/:id/about', validationAbout, ctrl.about.updateAbout);
@@ -36,16 +38,13 @@ router.post('/tech_skills', validationTechSkill, ctrl.techSkills.add);
 router.put('/tech_skills/:id', validationTechSkill, ctrl.techSkills.updateById);
 router.delete('/tech_skills/:id', ctrl.techSkills.removeById);
 
+router.post('/experience', validationExperience, ctrl.experience.add);
+router.put('/experience/:id', validationExperience, ctrl.experience.updateById);
+router.delete('/experience/:id', ctrl.experience.removeById);
+
 // router.post('/certificate', ctrl.certificate.add);
 // router.delete('/certificate', ctrl.certificate.removeById);
 // router.put('/certificate', ctrl.certificate.updateById);
-
-
-// router.post('/experience', ctrl.experience.add);
-// router.delete('/experience', ctrl.experience.removeById);
-// router.put('/experience', ctrl.experience.updateById);
-
-
 
 router.get('/', ctrl.getAll);
 
