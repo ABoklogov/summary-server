@@ -38,9 +38,11 @@ const contactSchema = Schema({
   telegram: {
     link: { 
       type: String,
+      default: ""
     },
     text: { 
       type: String,
+      default: ""
     },
   }
 }, { versionKey: false, timestamps: true });
