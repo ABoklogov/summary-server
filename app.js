@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const { serverLog } = require('./middlewares');
 const { resumeRouter } = require('./routes/api');
 const { portfolioRouter } = require('./routes/api');
+const { authRouter } = require('./routes/api');
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.use(serverLog());
 
 app.use('/api/v1/resume', resumeRouter);
 app.use('/api/v1/portfolio', portfolioRouter);
+app.use('/api/v1/auth', authRouter);
+
 app.use('/api/v1/test', (req, res) => {
   res.send('<h2>test</h2>')
 });

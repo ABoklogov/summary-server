@@ -63,8 +63,8 @@ const joiSchemaContacts = Joi.object({
     text: Joi.string().pattern(phoneReg).required(),
   },
   telegram: {
-    link: Joi.string(),
-    text: Joi.string(),
+    link: Joi.string().default(''),
+    text: Joi.string().default(''),
   }
 });
 

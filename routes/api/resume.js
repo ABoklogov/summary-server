@@ -22,6 +22,7 @@ const validationCertificate = validation(joiSchemaCertificate);
 
 router.patch('/about/:id/name', validationAbout, controllerWrapper(ctrl.about.updateName));
 router.patch('/about/:id/about', validationAbout, controllerWrapper(ctrl.about.updateAbout));
+router.patch('/about/avatars', /*upload.single('avatar'),*/ controllerWrapper(ctrl.about.updateAvatar));
 
 router.patch('/contacts/:id/city', validationContacts, controllerWrapper(ctrl.contacts.updateCity));
 router.patch('/contacts/:id/email', validationContacts, controllerWrapper(ctrl.contacts.updateEmail));
