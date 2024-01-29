@@ -6,6 +6,7 @@ const { serverLog } = require('./middlewares');
 const { resumeRouter } = require('./routes/api');
 const { portfolioRouter } = require('./routes/api');
 const { authRouter } = require('./routes/api');
+const { NotFound } = require('http-errors');
 
 const app = express();
 
@@ -27,13 +28,8 @@ app.use('/api/v1/test', (req, res) => {
   res.send('<h2>test</h2>')
 });
 
-
 app.use((_, res) => {
-  res.status(404).json({
-    status: 'error',
-    code: 404,
-    message: 'Not found'
-  });
+  throw new NotFound('Not found');
 });
 
 app.use((err, _, res, __) => {

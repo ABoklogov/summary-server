@@ -1,4 +1,5 @@
 const { TechSkill } = require('../../../models/resume');
+const { InternalServerError } = require('http-errors');
 
 const add = async (req, res) => {
   const newTechSkill = req.body;
@@ -6,7 +7,7 @@ const add = async (req, res) => {
   const result = await TechSkill.create(newTechSkill);
 
   if (!result) {
-    throw new Error('Server Error!');
+    throw new InternalServerError('Server Error!');
   };
 
   res.status(201).json({

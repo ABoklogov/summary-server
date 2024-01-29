@@ -3,7 +3,6 @@ const controllerWrapper = (ctrl) => {
     try {
       await ctrl(req, res, next)
     } catch (error) {
-      console.log("🚀 ~ return ~ error:", error)
       next(error)
     }
   }

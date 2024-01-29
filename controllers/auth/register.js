@@ -1,16 +1,20 @@
 const { User } = require('../../models/user');
 const bcrypt = require('bcryptjs');
+const { Conflict } = require('http-errors');
+const { MY_PASSWORD, LOGIN } = process.env;
 
 const register = async (req, res, next) => {
   const { login, password } = req.body;
+
+  // проверка, чтобы никто не регался
+  if (MY_PASSWORD !== password || LOGIN !== login) {
+    throw new Conflict('You are not eligible to register');
+  };
+
   const user = await User.findOne({ login });
   // проверяем есть ли юзер
   if (user) {
-    return res.status(409).json({
-      status: 'error',
-      code: 409,
-      message: 'Already register'
-    });
+    throw new Conflict('Already register');
   };
 
   const { SALT } = process.env;

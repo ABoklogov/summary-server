@@ -1,12 +1,13 @@
 const { Education } = require('../../../models/resume');
+const { NotFound } = require('http-errors');
 
 const removeById = async (req, res) => {
   const {id} = req.params;
   
   const result = await Education.findByIdAndDelete(id);
 
-  result
-    ? res.status(200).json({
+  if (result) {
+    res.status(200).json({
       status: 'success',
       code: 200,
       data: {
@@ -14,12 +15,9 @@ const removeById = async (req, res) => {
       },
       message: `Education with id: ${id} deleted`
     })
-    : res.status(404).json({
-      status: 'error',
-      code: 404,
-      data: null,
-      message: 'Not found'
-    });
+  } else {
+    throw new NotFound('Not found');
+  };
 };
 
 module.exports = removeById;

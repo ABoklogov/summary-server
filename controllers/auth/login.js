@@ -1,22 +1,15 @@
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const { User } = require('../../models/user');
+const { Unauthorized } = require('http-errors');
+const creationToken = require('./creationToken');
 
 const login = async (req, res) => {
   const { login, password } = req.body;
   const user = await User.findOne({ login });
 
-  const responseError = () => {
-    return res.status(401).json({
-      status: 'unauthorized',
-      code: 401,
-      message: 'Login or password is wrong'
-    })
-  };
-
-  // есди юзера не существует в базе, генерируем ошибку
+  // если юзера не существует в базе, генерируем ошибку
   if (!user) {
-    responseError();
+    throw new Unauthorized("Login or password is wrong");
   };
 
   const hashPassword = user.password;
@@ -24,16 +17,11 @@ const login = async (req, res) => {
 
   // если пароль не верный, генерируем ошибку
   if (!compareResult) {
-    responseError();
+    throw new Unauthorized("Login or password is wrong");
   };
 
-  const payload = {
-    id: user._id
-  };
-
-  const { SECRET_KEY } = process.env;
   // создаем токен
-  const token = jwt.sign(payload, SECRET_KEY);
+  const token = creationToken(user);
   // обновляем токен юзера в базе
   await User.findByIdAndUpdate(user._id, { token });
 

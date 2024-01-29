@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { validation, controllerWrapper } = require('../../middlewares')
+const { validation, controllerWrapper, authenticate  } = require('../../middlewares')
 const { resume: ctrl } = require('../../controllers/');
 // console.log("🚀 ~ file: resume.js:5 ~ ctrl:", ctrl)
 const { joiSchemaAbout } = require('../../models/resume/about');
@@ -20,34 +20,34 @@ const validationTechSkill = validation(joiSchemaTechSkill);
 const validationExperience = validation(joiSchemaExperience);
 const validationCertificate = validation(joiSchemaCertificate);
 
-router.patch('/about/:id/name', validationAbout, controllerWrapper(ctrl.about.updateName));
-router.patch('/about/:id/about', validationAbout, controllerWrapper(ctrl.about.updateAbout));
-router.patch('/about/avatars', /*upload.single('avatar'),*/ controllerWrapper(ctrl.about.updateAvatar));
+router.patch('/about/:id/name', authenticate, validationAbout, controllerWrapper(ctrl.about.updateName));
+router.patch('/about/:id/about', authenticate, validationAbout, controllerWrapper(ctrl.about.updateAbout));
+router.patch('/about/avatars', authenticate, /*upload.single('avatar'),*/ controllerWrapper(ctrl.about.updateAvatar));
 
-router.patch('/contacts/:id/city', validationContacts, controllerWrapper(ctrl.contacts.updateCity));
-router.patch('/contacts/:id/email', validationContacts, controllerWrapper(ctrl.contacts.updateEmail));
-router.patch('/contacts/:id/phone', validationContacts, controllerWrapper(ctrl.contacts.updatePhone));
-router.patch('/contacts/:id/telegram', controllerWrapper(ctrl.contacts.updateTelegram));
+router.patch('/contacts/:id/city', authenticate, validationContacts, controllerWrapper(ctrl.contacts.updateCity));
+router.patch('/contacts/:id/email', authenticate, validationContacts, controllerWrapper(ctrl.contacts.updateEmail));
+router.patch('/contacts/:id/phone', authenticate, validationContacts, controllerWrapper(ctrl.contacts.updatePhone));
+router.patch('/contacts/:id/telegram', authenticate, controllerWrapper(ctrl.contacts.updateTelegram));
 
-router.post('/social', validationSocial, controllerWrapper(ctrl.social.add));
-router.put('/social/:id', validationSocial, controllerWrapper(ctrl.social.updateById));
-router.delete('/social/:id', controllerWrapper(ctrl.social.removeById));
+router.post('/social', authenticate, validationSocial, controllerWrapper(ctrl.social.add));
+router.put('/social/:id', authenticate, validationSocial, controllerWrapper(ctrl.social.updateById));
+router.delete('/social/:id', authenticate, controllerWrapper(ctrl.social.removeById));
 
-router.post('/education', validationEducation, controllerWrapper(ctrl.education.add));
-router.put('/education/:id', validationEducation, controllerWrapper(ctrl.education.updateById));
-router.delete('/education/:id', controllerWrapper(ctrl.education.removeById));
+router.post('/education', authenticate, validationEducation, controllerWrapper(ctrl.education.add));
+router.put('/education/:id', authenticate, validationEducation, controllerWrapper(ctrl.education.updateById));
+router.delete('/education/:id', authenticate, controllerWrapper(ctrl.education.removeById));
 
-router.post('/tech_skills', validationTechSkill, controllerWrapper(ctrl.techSkills.add));
-router.put('/tech_skills/:id', validationTechSkill, controllerWrapper(ctrl.techSkills.updateById));
-router.delete('/tech_skills/:id', controllerWrapper(ctrl.techSkills.removeById));
+router.post('/tech_skills', authenticate, validationTechSkill, controllerWrapper(ctrl.techSkills.add));
+router.put('/tech_skills/:id', authenticate, validationTechSkill, controllerWrapper(ctrl.techSkills.updateById));
+router.delete('/tech_skills/:id', authenticate, controllerWrapper(ctrl.techSkills.removeById));
 
-router.post('/experience', validationExperience, controllerWrapper(ctrl.experience.add));
-router.put('/experience/:id', validationExperience, controllerWrapper(ctrl.experience.updateById));
-router.delete('/experience/:id', controllerWrapper(ctrl.experience.removeById));
+router.post('/experience', authenticate, validationExperience, controllerWrapper(ctrl.experience.add));
+router.put('/experience/:id', authenticate, validationExperience, controllerWrapper(ctrl.experience.updateById));
+router.delete('/experience/:id', authenticate, controllerWrapper(ctrl.experience.removeById));
 
-router.post('/certificate', validationCertificate, controllerWrapper(ctrl.certificate.add));
-router.put('/certificate/:id', validationCertificate, controllerWrapper(ctrl.certificate.updateById));
-router.delete('/certificate/:id', ctrl.certificate.removeById);
+router.post('/certificate', authenticate, validationCertificate, controllerWrapper(ctrl.certificate.add));
+router.put('/certificate/:id', authenticate, validationCertificate, controllerWrapper(ctrl.certificate.updateById));
+router.delete('/certificate/:id', authenticate, ctrl.certificate.removeById);
 
 // router.get('/', ctrl.getAll);
 
