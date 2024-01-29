@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
 const Joi = require('joi');
 
-const experienceSchema = Schema({
+const certificateSchema = Schema({
   position: {
     ru: {
       type: String,
@@ -10,7 +10,7 @@ const experienceSchema = Schema({
     en: {
       type: String,
       required: true
-    },
+    }
   },
   company: {
     ru: {
@@ -20,17 +20,7 @@ const experienceSchema = Schema({
     en: {
       type: String,
       required: true
-    },
-  },
-  responsibility: {
-    ru: {
-      type: String,
-      required: true
-    },
-    en: {
-      type: String,
-      required: true
-    },
+    }
   },
   start: {
     ru: {
@@ -40,7 +30,7 @@ const experienceSchema = Schema({
     en: {
       type: String,
       required: true
-    },
+    }
   },
   finish: {
     ru: {
@@ -50,24 +40,24 @@ const experienceSchema = Schema({
     en: {
       type: String,
       required: true
-    },
+    }
   },
   webSite: {
     type: String,
     default: ""
   },
+  path: {
+    type: String,
+    default: ""
+  },
 }, { versionKey: false, timestamps: true });
 
-const joiSchemaExperience = Joi.object({
+const joiSchemaCertificate = Joi.object({
   position: {
     ru: Joi.string().required(),
     en: Joi.string().required(),
   },
   company: {
-    ru: Joi.string().required(),
-    en: Joi.string().required(),
-  },
-  responsibility: {
     ru: Joi.string().required(),
     en: Joi.string().required(),
   },
@@ -79,12 +69,13 @@ const joiSchemaExperience = Joi.object({
     ru: Joi.string().required(),
     en: Joi.string().required(),
   },
-  webSite: Joi.string()
+  webSite: Joi.string(),
+  path: Joi.string(),
 });
 
-const Experience = model('experience', experienceSchema);
+const Certificate = model('certificate', certificateSchema);
 
 module.exports = {
-  Experience, 
-  joiSchemaExperience
+  Certificate, 
+  joiSchemaCertificate
 };

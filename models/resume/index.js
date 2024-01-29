@@ -4,6 +4,7 @@ const { Social } = require('./social');
 const { Education } = require('./education');
 const { TechSkill } = require('./techSkill');
 const { Experience } = require('./experience');
+const { Certificate } = require('./certificate');
 
 module.exports = {
   About,
@@ -11,5 +12,6 @@ module.exports = {
   Social,
   Education,
   TechSkill,
-  Experience
+  Experience,
+  Certificate
 }
