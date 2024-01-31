@@ -69,8 +69,8 @@ const joiSchemaCertificate = Joi.object({
     ru: Joi.string().required(),
     en: Joi.string().required(),
   },
-  webSite: Joi.string(),
-  path: Joi.string(),
+  webSite: Joi.string().allow('').default(""),
+  path: Joi.string().allow('').default(""),
 });
 
 const Certificate = model('certificate', certificateSchema);

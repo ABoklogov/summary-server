@@ -48,6 +48,7 @@ router.delete('/experience/:id', authenticate, controllerWrapper(ctrl.experience
 router.post('/certificate', authenticate, validationCertificate, controllerWrapper(ctrl.certificate.add));
 router.put('/certificate/:id', authenticate, validationCertificate, controllerWrapper(ctrl.certificate.updateById));
 router.delete('/certificate/:id', authenticate, ctrl.certificate.removeById);
+router.patch('/certificate/:id/path', authenticate, validationCertificate, upload.single('path'), controllerWrapper(ctrl.certificate.updatePath));
 
 // router.get('/', ctrl.getAll);
 

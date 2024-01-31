@@ -79,7 +79,7 @@ const joiSchemaExperience = Joi.object({
     ru: Joi.string().required(),
     en: Joi.string().required(),
   },
-  webSite: Joi.string()
+  webSite: Joi.string().allow('').default(""),
 });
 
 const Experience = model('experience', experienceSchema);
