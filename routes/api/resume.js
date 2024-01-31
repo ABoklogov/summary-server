@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { validation, controllerWrapper, authenticate  } = require('../../middlewares')
+const { validation, controllerWrapper, authenticate, upload } = require('../../middlewares');
 const { resume: ctrl } = require('../../controllers/');
 // console.log("🚀 ~ file: resume.js:5 ~ ctrl:", ctrl)
 const { joiSchemaAbout } = require('../../models/resume/about');
@@ -22,7 +22,7 @@ const validationCertificate = validation(joiSchemaCertificate);
 
 router.patch('/about/:id/name', authenticate, validationAbout, controllerWrapper(ctrl.about.updateName));
 router.patch('/about/:id/about', authenticate, validationAbout, controllerWrapper(ctrl.about.updateAbout));
-router.patch('/about/avatars', authenticate, /*upload.single('avatar'),*/ controllerWrapper(ctrl.about.updateAvatar));
+router.patch('/about/:id/avatars', authenticate, upload.single('avatar'), controllerWrapper(ctrl.about.updateAvatar));
 
 router.patch('/contacts/:id/city', authenticate, validationContacts, controllerWrapper(ctrl.contacts.updateCity));
 router.patch('/contacts/:id/email', authenticate, validationContacts, controllerWrapper(ctrl.contacts.updateEmail));

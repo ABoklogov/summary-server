@@ -3,7 +3,7 @@ const validation = require('./validation');
 const controllerWrapper = require('./controllerWrapper');
 const limiter = require('./limiter');
 const authenticate = require('./authenticate');
-// const uploud = require('./uploud');
+const upload = require('./upload');
 
 module.exports = {
   serverLog,
@@ -11,5 +11,5 @@ module.exports = {
   controllerWrapper,
   limiter,
   authenticate,
-  // uploud,
+  upload,
 };
