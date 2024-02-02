@@ -1,12 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
+const { validation, controllerWrapper, authenticate, upload } = require('../../middlewares');
 const { portfolio: ctrl } = require('../../controllers/');
 
-router.get('/', ctrl.getAll);
+const { joiSchemaLinks } = require('../../models/portfolio/link');
 
-// router.put('/link-client', ctrl.links.udateLinkClient);
-// router.put('/link-server', ctrl.links.updateLinkServer);
+const validationLinks = validation(joiSchemaLinks);
+
+// router.get('/', ctrl.getAll);
+
+router.patch('/links/:id/client', authenticate, validationLinks, controllerWrapper(ctrl.links.updateLinkClient));
+router.patch('/links/:id/server', authenticate, validationLinks, controllerWrapper(ctrl.links.updateLinkServer));
 
 // router.post('/projects', ctrl.projects.add);
 // router.delete('/projects', ctrl.projects.removeById);
