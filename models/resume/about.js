@@ -63,7 +63,7 @@ const joiSchemaAbout = Joi.object({
     ru: Joi.string().required(),
     en: Joi.string().required(),
   },
-  avatar: Joi.string().default('')
+  avatar: Joi.string().allow("").default("")
 });
 
 const About = model('about', aboutSchema);

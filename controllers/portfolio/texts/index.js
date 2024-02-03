@@ -1,7 +1,7 @@
 const updateFooter = require('./updateFooter');
-const uptateAbout = require('./uptateAbout');
+const updateAbout = require('./uptateAbout');
 
 module.exports = {
   updateFooter,
-  uptateAbout,
+  updateAbout,
 }
