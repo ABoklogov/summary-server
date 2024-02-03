@@ -6,9 +6,11 @@ const { portfolio: ctrl } = require('../../controllers/');
 
 const { joiSchemaLinks } = require('../../models/portfolio/link');
 const { joiSchemaTexts } = require('../../models/portfolio/text');
+const { joiSchemaProject } = require('../../models/portfolio/project');
 
 const validationLinks = validation(joiSchemaLinks);
 const validationTexts = validation(joiSchemaTexts);
+const validationProject = validation(joiSchemaProject);
 
 // router.get('/', ctrl.getAll);
 
@@ -18,9 +20,9 @@ router.patch('/links/:id/server', authenticate, validationLinks, controllerWrapp
 router.patch('/text/:id/about', authenticate, validationTexts, controllerWrapper(ctrl.texts.updateAbout));
 router.patch('/text/:id/footer', authenticate, validationTexts, controllerWrapper(ctrl.texts.updateFooter));
 
-// router.post('/projects', ctrl.projects.add);
-// router.delete('/projects', ctrl.projects.removeById);
-// router.put('/projects', ctrl.projects.updateById);
+router.post('/projects', authenticate, upload.single('picture'), validationProject, controllerWrapper(ctrl.projects.add));
+// router.put('/projects/:id', ctrl.projects.updateById);
+// router.delete('/projects/:id', ctrl.projects.removeById);
 
 
 module.exports = router;
