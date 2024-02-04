@@ -1,10 +1,9 @@
 const fs = require('fs/promises');
 const path = require('path');
-const extensionList = require('../../extensionList');
 const { Project } = require('../../../models/portfolio');
 const { InternalServerError } = require('http-errors');
 
-const prpjectsPictureDir = path.join(__dirname, '../../../', 'public/projectImages');
+const projectsPictureDir = path.join(__dirname, '../../../', 'public/projectImages');
 
 const add = async (req, res) => {
   const newProject = req.body;
@@ -14,6 +13,10 @@ const add = async (req, res) => {
   if (!result) {
     throw new InternalServerError('Server Error!');
   };
+
+  const id = result._id.toString();
+  const dirPath = path.join(projectsPictureDir, id);
+  await fs.mkdir(dirPath) // создаем папку для картинок в public/projectImages/....
 
   res.status(201).json({
     status: 'created',

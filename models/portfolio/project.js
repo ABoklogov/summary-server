@@ -63,7 +63,7 @@ const projectSchema = Schema({
   },
   picture: {
     type: String,
-    required: true
+    default: ''
   },
   backgroundColor: {
     type: String,
@@ -96,7 +96,7 @@ const joiSchemaProject = Joi.object({
     ru: Joi.string().required(),
     en: Joi.string().required(),
   },
-  picture: Joi.string().required(),
+  picture: Joi.string().allow('').default(''),
   backgroundColor: Joi.string().required(),
 });
 
