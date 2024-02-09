@@ -12,7 +12,7 @@ const validationLinks = validation(joiSchemaLinks);
 const validationTexts = validation(joiSchemaTexts);
 const validationProject = validation(joiSchemaProject);
 
-// router.get('/', ctrl.getAll);
+router.get('/', controllerWrapper(ctrl.getAll));
 
 router.patch('/links/:id/client', authenticate, validationLinks, controllerWrapper(ctrl.links.updateLinkClient));
 router.patch('/links/:id/server', authenticate, validationLinks, controllerWrapper(ctrl.links.updateLinkServer));
@@ -21,8 +21,8 @@ router.patch('/text/:id/about', authenticate, validationTexts, controllerWrapper
 router.patch('/text/:id/footer', authenticate, validationTexts, controllerWrapper(ctrl.texts.updateFooter));
 
 router.post('/projects', authenticate, validationProject, controllerWrapper(ctrl.projects.add));
-// router.put('/projects/:id', ctrl.projects.updateById);
-// router.delete('/projects/:id', ctrl.projects.removeById);
+router.put('/projects/:id', authenticate, validationProject, controllerWrapper(ctrl.projects.updateById));
+router.delete('/projects/:id', authenticate, validationProject, controllerWrapper(ctrl.projects.removeById));
 router.patch('/projects/:id/picture', authenticate, upload.single('picture'), controllerWrapper(ctrl.projects.updatePicture));
 
 module.exports = router;
