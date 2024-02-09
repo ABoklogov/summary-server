@@ -12,6 +12,5 @@ router.post('/register', userValidationMiddleware, controllerWrapper(ctrl.regist
 router.post('/login', limiter, userValidationMiddleware, controllerWrapper(ctrl.login));
 router.get('/logout', authenticate, controllerWrapper(ctrl.logout));
 // router.get('/current', authenticate, controllerWrapper(ctrl.current));
-// router.patch('/', authenticate, controllerWrapper(ctrl.subscription));
 
 module.exports = router;
