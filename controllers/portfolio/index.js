@@ -1,11 +1,11 @@
 const links = require('./links');
-const text = require('./text');
+const texts = require('./texts');
 const projects = require('./projects');
 const getAll = require('./getAll');
 
 module.exports = {
   links,
-  text,
+  texts,
   projects,
   getAll,
 }

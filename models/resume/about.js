@@ -39,7 +39,11 @@ const aboutSchema = Schema({
       type: String,
       required: true
     }
-  }
+  },
+  avatar: {
+    type: String,
+    default: ''
+  },
 }, { versionKey: false, timestamps: true });
 
 const joiSchemaAbout = Joi.object({
@@ -58,7 +62,8 @@ const joiSchemaAbout = Joi.object({
   about: {
     ru: Joi.string().required(),
     en: Joi.string().required(),
-  }
+  },
+  avatar: Joi.string().allow("").default("")
 });
 
 const About = model('about', aboutSchema);

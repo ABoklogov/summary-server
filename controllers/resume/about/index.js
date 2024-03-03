@@ -1,5 +1,9 @@
-const update = require('./update');
+const updateName = require('./updateName');
+const updateAbout = require('./updateAbout');
+const updateAvatar = require('./updateAvatar');
 
 module.exports = {
-  update,
+  updateName,
+  updateAbout,
+  updateAvatar,
 };

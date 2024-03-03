@@ -38,9 +38,11 @@ const contactSchema = Schema({
   telegram: {
     link: { 
       type: String,
+      default: ""
     },
     text: { 
       type: String,
+      default: ""
     },
   }
 }, { versionKey: false, timestamps: true });
@@ -61,8 +63,8 @@ const joiSchemaContacts = Joi.object({
     text: Joi.string().pattern(phoneReg).required(),
   },
   telegram: {
-    link: Joi.string(),
-    text: Joi.string(),
+    link: Joi.string().allow("").default(""),
+    text: Joi.string().allow("").default(""),
   }
 });
 

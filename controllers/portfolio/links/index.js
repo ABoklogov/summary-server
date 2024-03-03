@@ -1,7 +1,7 @@
-const udateLinkClient = require('./udateLinkClient');
+const updateLinkClient = require('./udateLinkClient');
 const updateLinkServer = require('./updateLinkServer');
 
 module.exports = {
-  udateLinkClient,
+  updateLinkClient,
   updateLinkServer,
 }
