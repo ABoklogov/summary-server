@@ -11,6 +11,6 @@ const userValidationMiddleware = validation(joiUserSchema);
 router.post('/register', userValidationMiddleware, controllerWrapper(ctrl.register));
 router.post('/login', limiter, userValidationMiddleware, controllerWrapper(ctrl.login));
 router.get('/logout', authenticate, controllerWrapper(ctrl.logout));
-// router.get('/current', authenticate, controllerWrapper(ctrl.current));
+router.get('/current', authenticate, controllerWrapper(ctrl.current));
 
 module.exports = router;
