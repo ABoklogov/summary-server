@@ -3,16 +3,36 @@ const Joi = require('joi');
 
 const textSchema = Schema({
   aboutText: {
-    type: String,
+    ru: { 
+      type: String,
+      required: true
+    },
+    en: { 
+      type: String,
+      required: true
+    },
   },
   footerText: {
-    type: String,
+    ru: { 
+      type: String,
+      required: true
+    },
+    en: { 
+      type: String,
+      required: true
+    },
   },
 }, { versionKey: false, timestamps: true });
 
 const joiSchemaTexts = Joi.object({
-  aboutText: Joi.string(),
-  footerText: Joi.string(),
+  aboutText: {
+    ru: Joi.string().required(),
+    en: Joi.string().required(),
+  },
+  footerText: {
+    ru: Joi.string().required(),
+    en: Joi.string().required(),
+  },
 });
 
 const Text = model('text', textSchema);
