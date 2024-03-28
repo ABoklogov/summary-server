@@ -22,7 +22,7 @@ router.patch('/text/:id/footer', authenticate, validationTexts, controllerWrappe
 
 router.post('/projects', authenticate, validationProject, controllerWrapper(ctrl.projects.add));
 router.put('/projects/:id', authenticate, validationProject, controllerWrapper(ctrl.projects.updateById));
-router.delete('/projects/:id', authenticate, validationProject, controllerWrapper(ctrl.projects.removeById));
+router.delete('/projects/:id', authenticate, controllerWrapper(ctrl.projects.removeById));
 router.patch('/projects/:id/picture', authenticate, upload.single('picture'), controllerWrapper(ctrl.projects.updatePicture));
 
 module.exports = router;

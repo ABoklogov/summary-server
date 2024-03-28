@@ -49,7 +49,7 @@ router.delete('/experience/:id', authenticate, controllerWrapper(ctrl.experience
 
 router.post('/certificate', authenticate, validationCertificate, controllerWrapper(ctrl.certificate.add));
 router.put('/certificate/:id', authenticate, validationCertificate, controllerWrapper(ctrl.certificate.updateById));
-router.delete('/certificate/:id', authenticate, ctrl.certificate.removeById);
+router.delete('/certificate/:id', authenticate, controllerWrapper(ctrl.certificate.removeById));
 router.patch('/certificate/:id/path', authenticate, upload.single('path'), controllerWrapper(ctrl.certificate.updatePath));
 
 module.exports = router;
