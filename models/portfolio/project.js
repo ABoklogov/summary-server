@@ -89,8 +89,8 @@ const joiSchemaProject = Joi.object({
   },
   tehnology: Joi.array().items(Joi.string().required()),
   linkFiles: {
-    text: Joi.string().required(),
-    url: Joi.string().required(),
+    text: Joi.string().allow('').default(''),
+    url: Joi.string().allow('').default(''),
   },
   description: {
     ru: Joi.string().required(),
