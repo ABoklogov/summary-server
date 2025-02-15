@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"No test\"",
-    "start": "node ./din/server",
-    "dev": "nodemon ./din/server"
+    "start": "node ./bin/server",
+    "dev": "nodemon ./bin/server"
   },
   "repository": {
     "type": "git",
